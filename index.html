@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="HoIOnMine: Steel & Sorcery — масштабная техномагическая сборка на Fabric 1.19.2. Глобальная стратегия, магия и индустрия в Minecraft.">
+    <title>HoIOnMine: Steel & Sorcery — Техномагическая Сборка</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sticky Navigation -->
+    <nav id="sticky-nav" class="sticky-nav">
+        <div class="sticky-nav__inner">
+            <div class="sticky-nav__logo">⚔️ HoIOnMine</div>
+            <div class="sticky-nav__actions">
+                <button id="toggle-effects" class="sticky-nav__toggle" title="Вкл/Выкл эффекты">
+                    <span class="sticky-nav__toggle-icon">✦</span>
+                </button>
+                <a href="#" class="btn btn--steel btn--nav">
+                    <span class="btn__icon">⬇</span>
+                    <span class="btn__text">СКАЧАТЬ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Cursor Follower Canvas -->
+    <canvas id="cursor-canvas"></canvas>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section id="hero" class="hero">
+        <div class="hero__overlay"></div>
+        <div class="hero__bg-image"></div>
+
+        <!-- Animated Rune Circles -->
+        <div class="hero__rune-circle hero__rune-circle--left"></div>
+        <div class="hero__rune-circle hero__rune-circle--right"></div>
+
+        <!-- Diagonal Rift Line -->
+        <div class="hero__rift">
+            <div class="hero__rift-glow"></div>
+        </div>
+
+        <div class="hero__content">
+            <div class="hero__logo">
+                <span class="hero__logo-icon">⚔️</span>
+                <h1 class="hero__title">
+                    <span class="hero__title-steel">HoIOnMine:</span>
+                    <span class="hero__title-magic">Steel & Sorcery</span>
+                </h1>
+            </div>
+
+            <h2 class="hero__subtitle">Масштабная Техномагическая Сборка на Fabric 1.19.2</h2>
+            <p class="hero__description">
+                Где дипломатия — лишь передышка перед артиллерийским обстрелом, а заклинания — топливо для заводов.
+                <br>Добро пожаловать в мир глобальной стратегии.
+            </p>
+
+            <div class="hero__cta">
+                <div class="hero__cta-btn-wrap">
+                    <a href="#" class="btn btn--steel">
+                        <span class="btn__icon">⬇</span>
+                        <span class="btn__text">СКАЧАТЬ .MRPACK</span>
+                        <span class="btn__shine"></span>
+                    </a>
+                    <span class="btn-format-label">Для Prism Launcher / MultiMC</span>
+                </div>
+                <div class="hero__cta-btn-wrap">
+                    <a href="#" class="btn btn--rust">
+                        <span class="btn__icon">📦</span>
+                        <span class="btn__text">СКАЧАТЬ .ZIP</span>
+                        <span class="btn__shine"></span>
+                    </a>
+                    <span class="btn-format-label">Для других лаунчеров</span>
+                </div>
+                <a href="#pillars" class="btn btn--magic">
+                    <span class="btn__icon">✦</span>
+                    <span class="btn__text">УЗНАТЬ ПОДРОБНОСТИ</span>
+                    <span class="btn__shine"></span>
+                </a>
+            </div>
+
+            <div class="hero__scroll-indicator">
+                <div class="hero__scroll-line"></div>
+                <span>СКРОЛЛ</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== THREE PILLARS SECTION ====== -->
+    <section id="pillars" class="pillars">
+        <div class="section-header">
+            <span class="section-header__tag">ЯДРО ГЕЙМПЛЕЯ</span>
+            <h2 class="section-header__title">Три Колонны Власти</h2>
+            <div class="section-header__line"></div>
+        </div>
+
+        <div class="pillars__grid">
+            <!-- Card 1: Technology -->
+            <div class="pillar-card" data-pillar="tech">
+                <div class="pillar-card__glow"></div>
+                <div class="pillar-card__border"></div>
+                <div class="pillar-card__visual">
+                    <div class="pillar-card__icon-wrap">
+                        <span class="pillar-card__icon">⚙️</span>
+                        <div class="pillar-card__gear-ring"></div>
+                    </div>
+                    <div class="pillar-card__particles" id="tech-particles"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <h3 class="pillar-card__title">ТЕХНОЛОГИЧЕСКИЙ ПРОГРЕСС</h3>
+                    <div class="pillar-card__divider"></div>
+                    <p class="pillar-card__text">
+                        Забудь о ручном труде. Твоя задача — превратить дикие земли в индустриальный рай с помощью
+                        <strong>Механизации</strong>, <strong>Логистики</strong> и <strong>Индустрии</strong>.
+                    </p>
+                    <ul class="pillar-card__features">
+                        <li>Сложные сети конвейеров Create</li>
+                        <li>Паровые двигатели и прессы</li>
+                        <li>Автоматизация всех процессов</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Magic -->
+            <div class="pillar-card" data-pillar="magic">
+                <div class="pillar-card__glow"></div>
+                <div class="pillar-card__border"></div>
+                <div class="pillar-card__visual">
+                    <div class="pillar-card__icon-wrap">
+                        <span class="pillar-card__icon">✨</span>
+                        <div class="pillar-card__magic-ring"></div>
+                    </div>
+                    <div class="pillar-card__particles" id="magic-particles"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <h3 class="pillar-card__title">МАГИЯ И ТАЙНЫЕ ЗНАНИЯ</h3>
+                    <div class="pillar-card__divider"></div>
+                    <p class="pillar-card__text">
+                        Магия здесь — не сказка, а стратегический ресурс. Арсенал древних
+                        <strong>артефактов</strong> и могущественные <strong>Ритуалы</strong> ждут твоего слова.
+                    </p>
+                    <ul class="pillar-card__features">
+                        <li>Рунические заклинания</li>
+                        <li>Древние артефакты власти</li>
+                        <li>Магические ритуалы</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Politics -->
+            <div class="pillar-card" data-pillar="politics">
+                <div class="pillar-card__glow"></div>
+                <div class="pillar-card__border"></div>
+                <div class="pillar-card__visual">
+                    <div class="pillar-card__icon-wrap">
+                        <span class="pillar-card__icon">🚩</span>
+                        <div class="pillar-card__map-ring"></div>
+                    </div>
+                    <div class="pillar-card__particles" id="politics-particles"></div>
+                </div>
+                <div class="pillar-card__content">
+                    <h3 class="pillar-card__title">ПОЛИТИЧЕСКАЯ АРЕНА</h3>
+                    <div class="pillar-card__divider"></div>
+                    <p class="pillar-card__text">
+                        Глобальная игра на шахматной доске мира. <strong>Территориальные споры</strong>,
+                        <strong>Глобальная карта ресурсов</strong> и Развитие наций до уровня магического ПВО и танков.
+                    </p>
+                    <ul class="pillar-card__features">
+                        <li>Стиль Hearts of Iron</li>
+                        <li>Движущиеся линии фронта</li>
+                        <li>Фракционная дипломатия</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== OPTIMIZATION SECTION ====== -->
+    <section id="tech-stack" class="tech-section">
+        <div class="tech-section__bg-grid"></div>
+        <div class="tech-section__pulse-lines">
+            <div class="pulse-line pulse-line--1"></div>
+            <div class="pulse-line pulse-line--2"></div>
+            <div class="pulse-line pulse-line--3"></div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-header__tag">НАДЁЖНОСТЬ</span>
+            <h2 class="section-header__title">Технический Фундамент</h2>
+            <div class="section-header__line"></div>
+        </div>
+
+        <div class="tech-section__grid">
+            <div class="tech-card" data-tech="fabric">
+                <div class="tech-card__icon-wrap">
+                    <span class="tech-card__icon">⚙️</span>
+                    <svg class="tech-card__ring" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" />
+                    </svg>
+                </div>
+                <h3 class="tech-card__title">Fabric 1.19.2</h3>
+                <p class="tech-card__text">Самая проверенная версия для крупных проектов. Стабильная база для масштабных
+                    модификаций.</p>
+            </div>
+
+            <div class="tech-card" data-tech="performance">
+                <div class="tech-card__icon-wrap">
+                    <span class="tech-card__icon">🚀</span>
+                    <svg class="tech-card__ring" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" />
+                    </svg>
+                </div>
+                <h3 class="tech-card__title">Максимальная Производительность</h3>
+                <p class="tech-card__text">Интегрированы моды оптимизации — Lithium, Sodium — для стабильного FPS даже
+                    на масштабных серверах.</p>
+            </div>
+
+            <div class="tech-card" data-tech="stability">
+                <div class="tech-card__icon-wrap">
+                    <span class="tech-card__icon">🛠</span>
+                    <svg class="tech-card__ring" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" />
+                    </svg>
+                </div>
+                <h3 class="tech-card__title">Стабильность</h3>
+                <p class="tech-card__text">Сборка протестирована на конфликты модов. Каждое обновление проходит полный
+                    цикл тестирования.</p>
+            </div>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="tech-section__stats">
+            <div class="stat-item">
+                <span class="stat-item__number" data-target="120">0</span>
+                <span class="stat-item__label">Модов в сборке</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item__number" data-target="60">0</span>
+                <span class="stat-item__label">FPS (стабильно)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item__number" data-target="500">0</span>
+                <span class="stat-item__label">Часов тестирования</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== INSTALLATION SECTION ====== -->
+    <section id="install" class="install-section">
+        <div class="section-header">
+            <span class="section-header__tag">НАЧАТЬ ИГРАТЬ</span>
+            <h2 class="section-header__title">Как Начать Свою Экспансию</h2>
+            <div class="section-header__line"></div>
+        </div>
+
+        <div class="install-section__steps">
+            <div class="install-step" data-step="1">
+                <div class="install-step__connector"></div>
+                <div class="install-step__number">
+                    <span>01</span>
+                    <div class="install-step__number-ring"></div>
+                </div>
+                <div class="install-step__content">
+                    <div class="install-step__icon">📥</div>
+                    <h3 class="install-step__title">Скачай Лаунчер</h3>
+                    <p class="install-step__text">
+                        Установи <strong>MultiMC</strong>, <strong>Prism Launcher</strong> или любой другой лаунчер
+                        с поддержкой Fabric. Убедись, что выбрана Java 17+.
+                    </p>
+                    <div class="install-step__warning">
+                        <span class="install-step__warning-icon">⚠️</span>
+                        <p>Сборка требует <strong>Java 17</strong>. Использование Java 8 или 21 может привести к крашу
+                            при запуске.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="install-step" data-step="2">
+                <div class="install-step__connector"></div>
+                <div class="install-step__number">
+                    <span>02</span>
+                    <div class="install-step__number-ring"></div>
+                </div>
+                <div class="install-step__content">
+                    <div class="install-step__icon">📦</div>
+                    <h3 class="install-step__title">Импортируй Сборку</h3>
+                    <p class="install-step__text">
+                        Скачай архив сборки и импортируй его в лаунчер. Все моды, конфиги и ресурспаки уже настроены —
+                        тебе не придётся ничего конфигурировать вручную.
+                    </p>
+                </div>
+            </div>
+
+            <div class="install-step" data-step="3">
+                <div class="install-step__connector"></div>
+                <div class="install-step__number">
+                    <span>03</span>
+                    <div class="install-step__number-ring"></div>
+                </div>
+                <div class="install-step__content">
+                    <div class="install-step__icon">⚔️</div>
+                    <h3 class="install-step__title">Подключись к Серверу</h3>
+                    <p class="install-step__text">
+                        Введи адрес сервера, выбери фракцию — и начни свою экспансию.
+                        Мир ждёт нового лидера. Будешь ли ты строить империю Стали или Магии?
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="install-section__cta">
+            <div class="install-section__cta-buttons">
+                <div class="hero__cta-btn-wrap">
+                    <a href="#" class="btn btn--steel btn--large">
+                        <span class="btn__icon">⬇</span>
+                        <span class="btn__text">СКАЧАТЬ .MRPACK</span>
+                        <span class="btn__shine"></span>
+                    </a>
+                    <span class="btn-format-label">Для Prism Launcher / MultiMC</span>
+                </div>
+                <div class="hero__cta-btn-wrap">
+                    <a href="#" class="btn btn--rust btn--large">
+                        <span class="btn__icon">📦</span>
+                        <span class="btn__text">СКАЧАТЬ .ZIP</span>
+                        <span class="btn__shine"></span>
+                    </a>
+                    <span class="btn-format-label">Для других лаунчеров</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer class="footer">
+        <div class="footer__content">
+            <div class="footer__logo">⚔️ HoIOnMine: Steel & Sorcery</div>
+            <p class="footer__text">Fabric 1.19.2 • Глобальная стратегия • Minecraft Modpack</p>
+            <div class="footer__divider"></div>
+            <p class="footer__copy">© 2026 HoIOnMine. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
