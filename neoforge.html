@@ -1,498 +1,420 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="HoIOnMine: Steel & Sorcery 2.0 — переосмысление техномагической сборки на NeoForge 1.21.1. Больше модов, лучше производительность, Java 21.">
-    <title>HoIOnMine: Steel & Sorcery 2.0 — NeoForge 1.21.1</title>
+    <meta name="description" content="HoIOnMine: Межсезонье — модпак на NeoForge 1.21.1. Главное — Create и Create: Aeronautics. Воздушная война, паровые машины, 60 модов.">
+    <title>HoIOnMine: Межсезонье — NeoForge 1.21.1</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="neoforge.css">
 </head>
+<body>
 
-<body class="theme-neoforge">
-    <!-- Sticky Navigation -->
-    <nav id="sticky-nav" class="sticky-nav">
-        <div class="sticky-nav__inner">
-            <div class="sticky-nav__logo">⚙️ HoIOnMine <span class="nf-badge">NeoForge</span></div>
-            <div class="sticky-nav__actions">
-                <a href="index.html" class="btn btn--ghost btn--nav">
-                    <span class="btn__icon">←</span>
-                    <span class="btn__text">Fabric 1.19.2</span>
-                </a>
-                <button id="toggle-effects" class="sticky-nav__toggle" title="Вкл/Выкл эффекты">
-                    <span class="sticky-nav__toggle-icon">✦</span>
-                </button>
-                <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest"
-                    class="btn btn--forge btn--nav">
-                    <span class="btn__icon">⬇</span>
-                    <span class="btn__text">СКАЧАТЬ</span>
-                </a>
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav__inner">
+            <a href="neoforge.html" class="nav__logo">
+                HoIOnMine
+                <span class="nav__logo-sub">Межсезонье</span>
+            </a>
+            <div class="nav__spacer"></div>
+            <div class="nav__versions">
+                <a href="index.html" class="nav__ver nav__ver--other">Fabric 1.19.2</a>
+                <a href="neoforge.html" class="nav__ver nav__ver--active">NeoForge 1.21.1</a>
             </div>
+            <a href="#install" class="nav__dl nf-dl">СКАЧАТЬ</a>
         </div>
     </nav>
 
-    <!-- Floating Particles Canvas -->
-    <canvas id="particles-canvas"></canvas>
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero__bg hero__bg--nf"></div>
+        <div class="hero__grad"></div>
+        <div class="hero__inner">
 
-    <!-- Cursor Follower Canvas -->
-    <canvas id="cursor-canvas"></canvas>
+            <!-- Left text -->
+            <div class="hero__text">
+                <p class="hero__tag nf-tag">
+                    <span class="hero__tag-line nf-line"></span>
+                    NeoForge 1.21.1 · Межсезонье
+                </p>
+                <h1 class="hero__title">
+                    HoIOnMine
+                    <span class="hero__title-sub nf-title-sub">Межсезонье</span>
+                </h1>
+                <p class="hero__desc">
+                    Воздушные корабли, паровые механизмы, глобальная война.
+                    Бридж-сезон на NeoForge 1.21.1 с упором на <strong class="nf-strong">Create</strong>
+                    и <strong class="nf-strong">Create: Aeronautics</strong>.
+                    60 модов, хорошая оптимизация.
+                </p>
+                <div class="hero__cta">
+                    <a href="#install" class="btn btn--nf">⬇ Скачать .mrpack</a>
+                    <a href="#install" class="btn btn--outline">📦 Скачать .zip</a>
+                </div>
+                <p class="hero__cta-note nf-note">Prism Launcher / MultiMC · Java 21</p>
+                <div class="hero__stats nf-stats">
+                    <div class="hero__stat">
+                        <span class="hero__stat-val nf-val">60</span>
+                        <span class="hero__stat-lbl">Модов</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-val nf-val">Java</span>
+                        <span class="hero__stat-lbl">21</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-val nf-val">Neo</span>
+                        <span class="hero__stat-lbl">Forge</span>
+                    </div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-val nf-val">1.21</span>
+                        <span class="hero__stat-lbl">.1</span>
+                    </div>
+                </div>
+            </div>
 
-    <!-- ====== VERSION BADGE STRIP ====== -->
-    <div class="version-strip">
-        <div class="version-strip__inner">
-            <span class="version-strip__tag">🆕 НОВАЯ ВЕРСИЯ</span>
-            <span class="version-strip__text">NeoForge 1.21.1 · Java 21 · Полный ребилд модпака</span>
-            <a href="#install" class="version-strip__link">Скачать →</a>
+            <!-- Right visual: interconnected gears (Create theme) -->
+            <div class="hero__visual" aria-hidden="true">
+                <div class="hero__deco-num nf-deco">MZ</div>
+                <div class="nf-gears">
+                    <!-- Main gear -->
+                    <div class="nfg-main">
+                        <div class="nfg-main__ring"></div>
+                        <div class="nfg-main__ring nfg-main__ring--2"></div>
+                        <div class="nfg-main__center">⚙️</div>
+                    </div>
+                    <!-- Secondary gear (Aeronautics) -->
+                    <div class="nfg-sec">
+                        <div class="nfg-sec__ring"></div>
+                        <div class="nfg-sec__center">✈️</div>
+                    </div>
+                    <!-- Connector line -->
+                    <div class="nfg-connector"></div>
+                    <!-- Small tertiary -->
+                    <div class="nfg-tiny">
+                        <div class="nfg-tiny__ring"></div>
+                        <div class="nfg-tiny__center">🔩</div>
+                    </div>
+                    <span class="gear__label nf-gear-label">CREATE · AERONAUTICS · 1.21.1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <div class="strip">
+        <div class="strip__inner">
+            <div class="strip__item">
+                <span class="strip__val nf-strip-val">60</span>
+                <span class="strip__lbl">Модов в сборке</span>
+            </div>
+            <div class="strip__item">
+                <span class="strip__val nf-strip-val">Java 21</span>
+                <span class="strip__lbl">Требуемая версия</span>
+            </div>
+            <div class="strip__item">
+                <span class="strip__val nf-strip-val">Neo</span>
+                <span class="strip__lbl">Forge 1.21.1</span>
+            </div>
+            <div class="strip__item">
+                <span class="strip__val nf-strip-val">Оптим.</span>
+                <span class="strip__lbl">Хорошая</span>
+            </div>
         </div>
     </div>
 
-    <!-- ====== HERO SECTION ====== -->
-    <section id="hero" class="hero hero--neoforge">
-        <div class="hero__overlay hero__overlay--forge"></div>
-        <div class="hero__bg-image hero__bg-image--forge"></div>
-
-        <!-- Animated Rune Circles -->
-        <div class="hero__rune-circle hero__rune-circle--left"></div>
-        <div class="hero__rune-circle hero__rune-circle--right"></div>
-
-        <!-- Diagonal Rift Line -->
-        <div class="hero__rift">
-            <div class="hero__rift-glow hero__rift-glow--forge"></div>
-        </div>
-
-        <!-- Forge Grid -->
-        <div class="hero__forge-grid"></div>
-
-        <div class="hero__content">
-            <div class="hero__version-tag">
-                <span class="hero__version-pill">NeoForge 1.21.1</span>
-            </div>
-            <div class="hero__logo">
-                <span class="hero__logo-icon">⚙️</span>
-                <h1 class="hero__title">
-                    <span class="hero__title-steel">HoIOnMine:</span>
-                    <span class="hero__title-forge">Steel & Sorcery 2.0</span>
-                </h1>
-            </div>
-
-            <h2 class="hero__subtitle">Масштабная Техномагическая Сборка на NeoForge 1.21.1</h2>
-            <p class="hero__description">
-                Полный ребилд легендарной сборки. Новый загрузчик, новые моды, новые возможности.
-                <br>Та же глобальная стратегия — мощнее, быстрее, глубже.
-            </p>
-
-            <!-- Comparison Badges -->
-            <div class="hero__badges">
-                <div class="hero__badge">
-                    <span class="hero__badge-icon">🔥</span>
-                    <span class="hero__badge-text">NeoForge вместо Fabric</span>
+    <!-- SPOTLIGHT: Create -->
+    <section class="spotlight section-pad">
+        <div class="container">
+            <div class="spotlight__inner">
+                <div class="spotlight__visual" aria-hidden="true">
+                    <div class="spotlight__bg-num">C</div>
+                    <div class="spotlight__gears">
+                        <div class="sg-big"></div>
+                        <div class="sg-center">⚙️</div>
+                        <div class="sg-small">🔩</div>
+                    </div>
                 </div>
-                <div class="hero__badge">
-                    <span class="hero__badge-icon">☕</span>
-                    <span class="hero__badge-text">Java 21</span>
+                <div class="spotlight__content">
+                    <p class="spotlight__tag nf-spotlight-tag">Главный мод</p>
+                    <h2 class="spotlight__name">Create</h2>
+                    <p class="spotlight__desc">
+                        Сердце сборки. <strong>Create</strong> даёт полный контроль над
+                        промышленностью: конвейеры, редстоун-механизмы, ротационная энергия,
+                        прессы и краны. Построй завод с нуля или автоматизируй добычу целого биома.
+                    </p>
+                    <div class="spotlight__tags">
+                        <span class="stag">Ротационная энергия</span>
+                        <span class="stag">Конвейеры</span>
+                        <span class="stag">Прессы и миксеры</span>
+                        <span class="stag">Паровые котлы</span>
+                        <span class="stag">Полная автоматизация</span>
+                    </div>
                 </div>
-                <div class="hero__badge">
-                    <span class="hero__badge-icon">📦</span>
-                    <span class="hero__badge-text">180+ модов</span>
-                </div>
-                <div class="hero__badge">
-                    <span class="hero__badge-icon">⚡</span>
-                    <span class="hero__badge-text">Embeddium + Oculus</span>
-                </div>
-            </div>
-
-            <div class="hero__cta">
-                <div class="hero__cta-btn-wrap">
-                    <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/hoionmine-neoforge.mrpack"
-                        class="btn btn--forge">
-                        <span class="btn__icon">⬇</span>
-                        <span class="btn__text">СКАЧАТЬ .MRPACK</span>
-                        <span class="btn__shine"></span>
-                    </a>
-                    <span class="btn-format-label">Для Prism Launcher / MultiMC</span>
-                </div>
-                <div class="hero__cta-btn-wrap">
-                    <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/HoiOnMine-NeoForge.zip"
-                        class="btn btn--rust">
-                        <span class="btn__icon">📦</span>
-                        <span class="btn__text">СКАЧАТЬ .ZIP</span>
-                        <span class="btn__shine"></span>
-                    </a>
-                    <span class="btn-format-label">Для других лаунчеров</span>
-                </div>
-                <a href="#whats-new" class="btn btn--magic">
-                    <span class="btn__icon">✦</span>
-                    <span class="btn__text">ЧТО НОВОГО</span>
-                    <span class="btn__shine"></span>
-                </a>
-            </div>
-
-            <div class="hero__scroll-indicator">
-                <div class="hero__scroll-line"></div>
-                <span>СКРОЛЛ</span>
             </div>
         </div>
     </section>
 
-    <!-- ====== WHAT'S NEW SECTION ====== -->
-    <section id="whats-new" class="whats-new-section">
-        <div class="whats-new-section__bg"></div>
-        <div class="section-header">
-            <span class="section-header__tag forge-tag">ОБНОВЛЕНИЯ</span>
-            <h2 class="section-header__title">Что изменилось в 2.0</h2>
-            <div class="section-header__line forge-line"></div>
-        </div>
-
-        <div class="changelog-grid">
-            <div class="changelog-card changelog-card--major">
-                <div class="changelog-card__icon">🔥</div>
-                <h3 class="changelog-card__title">NeoForge вместо Fabric</h3>
-                <p class="changelog-card__text">Переход на NeoForge открывает доступ к тысячам модов из экосистемы Forge,
-                    которые никогда не были портированы на Fabric. Шире выбор — глубже геймплей.</p>
-                <div class="changelog-card__tag">ПЛАТФОРМА</div>
-            </div>
-
-            <div class="changelog-card changelog-card--perf">
-                <div class="changelog-card__icon">⚡</div>
-                <h3 class="changelog-card__title">Новый стек оптимизации</h3>
-                <p class="changelog-card__text">Embeddium + Oculus + ImmediatelyFast. Значительный прирост FPS по
-                    сравнению с Fabric-версией. Дальность прорисовки увеличена без потери производительности.</p>
-                <div class="changelog-card__tag">ПРОИЗВОДИТЕЛЬНОСТЬ</div>
-            </div>
-
-            <div class="changelog-card changelog-card--content">
-                <div class="changelog-card__icon">⚙️</div>
-                <h3 class="changelog-card__title">Create: расширенный арсенал</h3>
-                <p class="changelog-card__text">Обновлённый Create с аддонами — Create: Steam 'n' Rails, Create:
-                    Crafts & Additions, Create: Enchantment Industry. Промышленность вышла на новый уровень.</p>
-                <div class="changelog-card__tag">ТЕХНОЛОГИИ</div>
-            </div>
-
-            <div class="changelog-card changelog-card--magic">
-                <div class="changelog-card__icon">✨</div>
-                <h3 class="changelog-card__title">Углублённая магическая система</h3>
-                <p class="changelog-card__text">Ars Nouveau 3.0, Occultism и Blood Magic. Три школы магии с
-                    уникальными механиками, которые переплетаются с индустриальной прогрессией.</p>
-                <div class="changelog-card__tag">МАГИЯ</div>
-            </div>
-
-            <div class="changelog-card changelog-card--world">
-                <div class="changelog-card__icon">🗺️</div>
-                <h3 class="changelog-card__title">Живой мир и биомы</h3>
-                <p class="changelog-card__text">Terralith + Biomes O' Plenty + Alex's Mobs. Мир стал враждебнее и
-                    разнообразнее. Каждый регион — уникальный театр военных действий.</p>
-                <div class="changelog-card__tag">МИР</div>
-            </div>
-
-            <div class="changelog-card changelog-card--java">
-                <div class="changelog-card__icon">☕</div>
-                <h3 class="changelog-card__title">Java 21</h3>
-                <p class="changelog-card__text">Виртуальные потоки Java 21 снижают нагрузку сервера при большом числе
-                    игроков. Сборка полностью оптимизирована под новую версию JVM.</p>
-                <div class="changelog-card__tag">ТЕХНИЧЕСКИЙ СТЕК</div>
+    <!-- SPOTLIGHT: Aeronautics -->
+    <section class="spotlight section-pad nf-spotlight-2">
+        <div class="container">
+            <div class="spotlight__inner spotlight__inner--rev">
+                <div class="spotlight__content">
+                    <p class="spotlight__tag nf-spotlight-tag">Главный аддон</p>
+                    <h2 class="spotlight__name">Create: Aeronautics</h2>
+                    <p class="spotlight__desc">
+                        Аддон превращает Create-механизмы в <strong>летающие корабли</strong>.
+                        Строй дирижабли, бомбардировщики и разведчики прямо из блоков.
+                        Воздушная война меняет тактику: фронт теперь трёхмерный.
+                    </p>
+                    <div class="spotlight__tags">
+                        <span class="stag">Летающие корабли</span>
+                        <span class="stag">Воздушные бои</span>
+                        <span class="stag">Бомбардировки</span>
+                        <span class="stag">Аэронавигация</span>
+                        <span class="stag">Трёхмерный фронт</span>
+                    </div>
+                </div>
+                <div class="spotlight__visual" aria-hidden="true">
+                    <div class="spotlight__bg-num">A</div>
+                    <div class="aero-visual">
+                        <div class="aero-ring"></div>
+                        <div class="aero-ring aero-ring--2"></div>
+                        <div class="aero-center">✈️</div>
+                        <div class="aero-orbit">
+                            <div class="aero-dot"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== THREE PILLARS SECTION ====== -->
-    <section id="pillars" class="pillars pillars--forge">
-        <div class="section-header">
-            <span class="section-header__tag forge-tag">ЯДРО ГЕЙМПЛЕЯ</span>
-            <h2 class="section-header__title">Три Колонны Власти</h2>
-            <div class="section-header__line forge-line"></div>
-        </div>
-
-        <div class="pillars__grid">
-            <!-- Card 1: Technology -->
-            <div class="pillar-card" data-pillar="tech">
-                <div class="pillar-card__glow"></div>
-                <div class="pillar-card__border"></div>
-                <div class="pillar-card__visual">
-                    <div class="pillar-card__icon-wrap">
-                        <span class="pillar-card__icon">⚙️</span>
-                        <div class="pillar-card__gear-ring"></div>
-                    </div>
-                    <div class="pillar-card__particles" id="tech-particles"></div>
+    <!-- FEATURES -->
+    <section class="features section-pad">
+        <div class="container">
+            <div class="features__head">
+                <div>
+                    <p class="sec-label nf-sec-label">Геймплей</p>
+                    <h2 class="sec-title">Чем заняться</h2>
                 </div>
-                <div class="pillar-card__content">
-                    <h3 class="pillar-card__title">ТЕХНОЛОГИЧЕСКИЙ ПРОГРЕСС</h3>
-                    <div class="pillar-card__divider"></div>
-                    <p class="pillar-card__text">
-                        Create с полным арсеналом аддонов. Паровые поезда, электрические двигатели,
-                        <strong>зачарованное производство</strong> и <strong>аэронавтика</strong>.
+                <p class="sec-sub">
+                    Межсезонье — не просто мост между сезонами.
+                    Это полноценный игровой опыт с фокусом на инженерию и воздушную войну.
+                </p>
+            </div>
+            <div class="features__grid">
+                <div class="feat-card">
+                    <div class="feat-card__n">01</div>
+                    <span class="feat-card__icon">🏭</span>
+                    <h3 class="feat-card__title nf-card-title">Строй фабрики</h3>
+                    <p class="feat-card__text">
+                        Create — полная производственная цепочка.
+                        От добычи руды до готовой продукции без единого
+                        ручного действия.
                     </p>
-                    <ul class="pillar-card__features">
-                        <li>Create: Steam 'n' Rails — паровые пути</li>
-                        <li>Create: Crafts & Additions — электричество</li>
-                        <li>Create: Enchantment Industry — маго-индустрия</li>
-                        <li>Applied Energistics 2 — квантовая логистика</li>
+                    <ul class="feat-card__list">
+                        <li>Автоматизированные шахты</li>
+                        <li>Сборочные линии</li>
+                        <li>Паровые электростанции</li>
                     </ul>
                 </div>
-            </div>
-
-            <!-- Card 2: Magic -->
-            <div class="pillar-card" data-pillar="magic">
-                <div class="pillar-card__glow"></div>
-                <div class="pillar-card__border"></div>
-                <div class="pillar-card__visual">
-                    <div class="pillar-card__icon-wrap">
-                        <span class="pillar-card__icon">✨</span>
-                        <div class="pillar-card__magic-ring"></div>
-                    </div>
-                    <div class="pillar-card__particles" id="magic-particles"></div>
-                </div>
-                <div class="pillar-card__content">
-                    <h3 class="pillar-card__title">МАГИЯ И ТАЙНЫЕ ЗНАНИЯ</h3>
-                    <div class="pillar-card__divider"></div>
-                    <p class="pillar-card__text">
-                        Три школы магии — <strong>Ars Nouveau</strong>, <strong>Occultism</strong> и
-                        <strong>Blood Magic</strong>. Каждая со своими ритуалами, артефактами и тёмными тайнами.
+                <div class="feat-card">
+                    <div class="feat-card__n">02</div>
+                    <span class="feat-card__icon">✈️</span>
+                    <h3 class="feat-card__title nf-card-title">Строй флот</h3>
+                    <p class="feat-card__text">
+                        Aeronautics: любая конструкция из блоков может
+                        взлететь. Спроектируй боевой дирижабль
+                        или грузовой транспорт.
                     </p>
-                    <ul class="pillar-card__features">
-                        <li>Ars Nouveau 3.0 — рунические заклинания</li>
-                        <li>Occultism — демонологические ритуалы</li>
-                        <li>Blood Magic — тёмная жертвенная магия</li>
-                        <li>Reliquary Reincarnations — реликвии эпох</li>
+                    <ul class="feat-card__list">
+                        <li>Летающие корабли любой формы</li>
+                        <li>Турели и бомбы на борту</li>
+                        <li>Логистика по воздуху</li>
                     </ul>
                 </div>
-            </div>
-
-            <!-- Card 3: Politics -->
-            <div class="pillar-card" data-pillar="politics">
-                <div class="pillar-card__glow"></div>
-                <div class="pillar-card__border"></div>
-                <div class="pillar-card__visual">
-                    <div class="pillar-card__icon-wrap">
-                        <span class="pillar-card__icon">🚩</span>
-                        <div class="pillar-card__map-ring"></div>
-                    </div>
-                    <div class="pillar-card__particles" id="politics-particles"></div>
-                </div>
-                <div class="pillar-card__content">
-                    <h3 class="pillar-card__title">ПОЛИТИЧЕСКАЯ АРЕНА</h3>
-                    <div class="pillar-card__divider"></div>
-                    <p class="pillar-card__text">
-                        Глобальная игра на шахматной доске мира. <strong>Территориальные споры</strong>,
-                        <strong>Дипломатия и предательство</strong> — движущиеся линии фронта теперь динамичнее.
+                <div class="feat-card">
+                    <div class="feat-card__n">03</div>
+                    <span class="feat-card__icon">🚩</span>
+                    <h3 class="feat-card__title nf-card-title">Воюй стратегически</h3>
+                    <p class="feat-card__text">
+                        Стратегия в стиле HoI не никуда не делась.
+                        Фракции, линии фронта, ресурсы — только теперь
+                        война идёт и в небе.
                     </p>
-                    <ul class="pillar-card__features">
-                        <li>Стиль Hearts of Iron — глобальная стратегия</li>
-                        <li>Фракционная система с дипломатией</li>
-                        <li>Экономика ресурсов и торговые пути</li>
-                        <li>Магическое ПВО и механические танки</li>
+                    <ul class="feat-card__list">
+                        <li>Фракционная политика</li>
+                        <li>Контроль территорий</li>
+                        <li>Трёхмерный фронт</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ====== TECH STACK SECTION ====== -->
-    <section id="tech-stack" class="tech-section tech-section--forge">
-        <div class="tech-section__bg-grid"></div>
-        <div class="tech-section__pulse-lines">
-            <div class="pulse-line pulse-line--1"></div>
-            <div class="pulse-line pulse-line--2"></div>
-            <div class="pulse-line pulse-line--3"></div>
-        </div>
-
-        <div class="section-header">
-            <span class="section-header__tag forge-tag">НАДЁЖНОСТЬ</span>
-            <h2 class="section-header__title">Технический Фундамент 2.0</h2>
-            <div class="section-header__line forge-line"></div>
-        </div>
-
-        <div class="tech-section__grid">
-            <div class="tech-card" data-tech="neoforge">
-                <div class="tech-card__icon-wrap">
-                    <span class="tech-card__icon">🔥</span>
-                    <svg class="tech-card__ring tech-card__ring--forge" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" />
-                    </svg>
+    <!-- TECH SPECS -->
+    <section class="tech section-pad">
+        <div class="container">
+            <p class="sec-label nf-sec-label reveal">Технический фундамент</p>
+            <h2 class="sec-title reveal">NeoForge 1.21.1</h2>
+            <div class="tech__grid">
+                <div class="tech-item">
+                    <span class="tech-item__icon">🔥</span>
+                    <h3 class="tech-item__title">NeoForge 1.21.1</h3>
+                    <p class="tech-item__text">
+                        Преемник Forge с активным развитием. Богатая экосистема модов,
+                        поддержка Create и Aeronautics из коробки.
+                    </p>
+                    <span class="tech-item__tag nf-tech-tag">Загрузчик</span>
                 </div>
-                <h3 class="tech-card__title">NeoForge 1.21.1</h3>
-                <p class="tech-card__text">Современный загрузчик с богатейшей экосистемой. Доступ к
-                    тысячам модов, которых нет на Fabric.</p>
-            </div>
-
-            <div class="tech-card" data-tech="performance">
-                <div class="tech-card__icon-wrap">
-                    <span class="tech-card__icon">🚀</span>
-                    <svg class="tech-card__ring tech-card__ring--forge" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" />
-                    </svg>
+                <div class="tech-item">
+                    <span class="tech-item__icon">⚡</span>
+                    <h3 class="tech-item__title">Оптимизация</h3>
+                    <p class="tech-item__text">
+                        Embeddium + ImmediatelyFast + Noisium. Сборка хорошо
+                        оптимизирована для 60 модов на Java 21.
+                    </p>
+                    <span class="tech-item__tag nf-tech-tag">Производительность</span>
                 </div>
-                <h3 class="tech-card__title">Оптимизация нового поколения</h3>
-                <p class="tech-card__text">Embeddium + Oculus + ImmediatelyFast + Noisium. Стабильный
-                    FPS даже с шейдерами на масштабных серверах.</p>
-            </div>
-
-            <div class="tech-card" data-tech="java21">
-                <div class="tech-card__icon-wrap">
-                    <span class="tech-card__icon">☕</span>
-                    <svg class="tech-card__ring tech-card__ring--forge" viewBox="0 0 100 100">
-                        <circle cx="50" cy="50" r="45" />
-                    </svg>
+                <div class="tech-item">
+                    <span class="tech-item__icon">☕</span>
+                    <h3 class="tech-item__title">Java 21 LTS</h3>
+                    <p class="tech-item__text">
+                        Виртуальные потоки и новый GC. Меньше лагов на сервере,
+                        быстрее загрузка, ниже потребление RAM.
+                    </p>
+                    <span class="tech-item__tag nf-tech-tag">Рантайм</span>
                 </div>
-                <h3 class="tech-card__title">Java 21 LTS</h3>
-                <p class="tech-card__text">Виртуальные потоки и улучшенный GC. Сервер держит больше
-                    игроков при меньшей нагрузке на CPU.</p>
-            </div>
-        </div>
-
-        <!-- Stats Bar -->
-        <div class="tech-section__stats">
-            <div class="stat-item">
-                <span class="stat-item__number stat-item__number--forge" data-target="180">0</span>
-                <span class="stat-item__label">Модов в сборке</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-item__number stat-item__number--forge" data-target="90">0</span>
-                <span class="stat-item__label">FPS (стабильно)</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-item__number stat-item__number--forge" data-target="3">0</span>
-                <span class="stat-item__label">Школы магии</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-item__number stat-item__number--forge" data-target="21">0</span>
-                <span class="stat-item__label">Java версия</span>
             </div>
         </div>
     </section>
 
-    <!-- ====== INSTALLATION SECTION ====== -->
-    <section id="install" class="install-section install-section--forge">
-        <div class="section-header">
-            <span class="section-header__tag forge-tag">НАЧАТЬ ИГРАТЬ</span>
-            <h2 class="section-header__title">Как Начать Свою Экспансию</h2>
-            <div class="section-header__line forge-line"></div>
-        </div>
-
-        <div class="install-section__steps">
-            <div class="install-step" data-step="1">
-                <div class="install-step__connector"></div>
-                <div class="install-step__number install-step__number--forge">
-                    <span>01</span>
-                    <div class="install-step__number-ring"></div>
+    <!-- INSTALL -->
+    <section id="install" class="install section-pad">
+        <div class="container">
+            <p class="sec-label nf-sec-label reveal">Начать играть</p>
+            <h2 class="sec-title reveal">Установка</h2>
+            <div class="install__layout">
+                <!-- Steps -->
+                <div class="install__steps">
+                    <div class="install-step">
+                        <div class="install-step__n nf-step-n">01</div>
+                        <div>
+                            <h3 class="install-step__title">Установи лаунчер</h3>
+                            <p class="install-step__text">
+                                <strong>Prism Launcher</strong> или <strong>MultiMC</strong> —
+                                оба поддерживают NeoForge и .mrpack.
+                            </p>
+                            <div class="install__warn">
+                                <span>⚠️</span>
+                                <p>Требуется <strong>Java 21</strong>. Java 17 или ниже — краш при запуске. Выбери JVM в настройках экземпляра.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="install-step__n nf-step-n">02</div>
+                        <div>
+                            <h3 class="install-step__title">Импортируй .mrpack</h3>
+                            <p class="install-step__text">
+                                Скачай <strong>.mrpack</strong> и перетащи в лаунчер.
+                                Все 60 модов и конфиги установятся автоматически.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="install-step__n nf-step-n">03</div>
+                        <div>
+                            <h3 class="install-step__title">Выдели память</h3>
+                            <p class="install-step__text">
+                                Рекомендуется <strong>5–7 GB RAM</strong> для клиента.
+                                Выставь в настройках экземпляра лаунчера.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="install-step">
+                        <div class="install-step__n nf-step-n">04</div>
+                        <div>
+                            <h3 class="install-step__title">В бой</h3>
+                            <p class="install-step__text">
+                                Подключись к серверу, выбери фракцию, постройте
+                                первый дирижабль и захвати небо.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="install-step__content">
-                    <div class="install-step__icon">📥</div>
-                    <h3 class="install-step__title">Скачай Лаунчер</h3>
-                    <p class="install-step__text">
-                        Установи <strong>Prism Launcher</strong> или <strong>MultiMC</strong>. Оба
-                        поддерживают NeoForge и формат .mrpack.
-                    </p>
-                    <div class="install-step__warning install-step__warning--forge">
-                        <span class="install-step__warning-icon">⚠️</span>
-                        <p>Сборка требует <strong>Java 21</strong>. Java 8 или 17 не поддерживаются — будет краш при
-                            запуске. Убедись что JVM правильно выбрана в настройках лаунчера.</p>
+
+                <!-- Download box -->
+                <div class="install__dl-box nf-dl-box reveal">
+                    <div class="install__dl-title">Скачать</div>
+                    <div class="install__dl-ver">Межсезонье · NeoForge 1.21.1</div>
+                    <div class="install__dl-btns">
+                        <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/hoionmine-neoforge.mrpack"
+                           class="dl-btn nf-dl-btn">
+                            <div class="dl-btn__left">
+                                <span class="dl-btn__ico">📄</span>
+                                <div>
+                                    <span class="dl-btn__name">.MRPACK</span>
+                                    <span class="dl-btn__hint">Prism Launcher, MultiMC</span>
+                                </div>
+                            </div>
+                            <span class="dl-btn__arr nf-arr">→</span>
+                        </a>
+                        <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/HoiOnMine-NeoForge.zip"
+                           class="dl-btn nf-dl-btn">
+                            <div class="dl-btn__left">
+                                <span class="dl-btn__ico">📦</span>
+                                <div>
+                                    <span class="dl-btn__name">.ZIP</span>
+                                    <span class="dl-btn__hint">Для других лаунчеров</span>
+                                </div>
+                            </div>
+                            <span class="dl-btn__arr nf-arr">→</span>
+                        </a>
+                    </div>
+                    <div class="install__specs">
+                        <div class="spec-row">
+                            <span class="spec-row__k">Загрузчик</span>
+                            <span class="spec-row__v nf-spec-v">NeoForge 1.21.1</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-row__k">Java</span>
+                            <span class="spec-row__v nf-spec-v">21 (обязательно)</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-row__k">RAM (клиент)</span>
+                            <span class="spec-row__v nf-spec-v">5–7 GB</span>
+                        </div>
+                        <div class="spec-row">
+                            <span class="spec-row__k">Модов</span>
+                            <span class="spec-row__v nf-spec-v">60</span>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="install-step" data-step="2">
-                <div class="install-step__connector"></div>
-                <div class="install-step__number install-step__number--forge">
-                    <span>02</span>
-                    <div class="install-step__number-ring"></div>
-                </div>
-                <div class="install-step__content">
-                    <div class="install-step__icon">📦</div>
-                    <h3 class="install-step__title">Импортируй Сборку</h3>
-                    <p class="install-step__text">
-                        Скачай <strong>.mrpack</strong> и перетащи его в окно лаунчера, либо используй
-                        «Добавить экземпляр → Из файла». Все моды и конфиги уже на месте.
-                    </p>
-                </div>
-            </div>
-
-            <div class="install-step" data-step="3">
-                <div class="install-step__connector"></div>
-                <div class="install-step__number install-step__number--forge">
-                    <span>03</span>
-                    <div class="install-step__number-ring"></div>
-                </div>
-                <div class="install-step__content">
-                    <div class="install-step__icon">🖥️</div>
-                    <h3 class="install-step__title">Настрой Память</h3>
-                    <p class="install-step__text">
-                        Рекомендуется <strong>6–8 GB RAM</strong> для клиента. Для сервера — от 8 GB.
-                        Выдели память в настройках экземпляра лаунчера.
-                    </p>
-                </div>
-            </div>
-
-            <div class="install-step" data-step="4">
-                <div class="install-step__number install-step__number--forge">
-                    <span>04</span>
-                    <div class="install-step__number-ring"></div>
-                </div>
-                <div class="install-step__content">
-                    <div class="install-step__icon">⚔️</div>
-                    <h3 class="install-step__title">Подключись к Серверу</h3>
-                    <p class="install-step__text">
-                        Введи адрес сервера, выбери фракцию — и начни свою экспансию.
-                        Мир ждёт нового лидера в 1.21.1.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Final CTA -->
-        <div class="install-section__cta">
-            <div class="install-section__cta-buttons">
-                <div class="hero__cta-btn-wrap">
-                    <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/hoionmine-neoforge.mrpack"
-                        class="btn btn--forge btn--large">
-                        <span class="btn__icon">⬇</span>
-                        <span class="btn__text">СКАЧАТЬ .MRPACK</span>
-                        <span class="btn__shine"></span>
-                    </a>
-                    <span class="btn-format-label">Для Prism Launcher / MultiMC</span>
-                </div>
-                <div class="hero__cta-btn-wrap">
-                    <a href="https://github.com/Franixx88/HoiOnMine-Site/releases/latest/download/HoiOnMine-NeoForge.zip"
-                        class="btn btn--rust btn--large">
-                        <span class="btn__icon">📦</span>
-                        <span class="btn__text">СКАЧАТЬ .ZIP</span>
-                        <span class="btn__shine"></span>
-                    </a>
-                    <span class="btn-format-label">Для других лаунчеров</span>
-                </div>
-            </div>
-            <!-- Back to Fabric -->
-            <div class="install-section__back">
-                <p class="install-section__back-text">Ищешь старую версию?</p>
-                <a href="index.html" class="btn btn--ghost">
-                    <span class="btn__icon">←</span>
-                    <span class="btn__text">Fabric 1.19.2 — Steel & Sorcery 1.0</span>
-                </a>
-            </div>
         </div>
     </section>
 
-    <!-- ====== FOOTER ====== -->
-    <footer class="footer footer--forge">
-        <div class="footer__content">
-            <div class="footer__logo">⚙️ HoIOnMine: Steel & Sorcery 2.0</div>
-            <p class="footer__text">NeoForge 1.21.1 · Java 21 · Глобальная стратегия · Minecraft Modpack</p>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__logo nf-footer-logo">HoIOnMine</div>
+                <div class="footer__meta">Межсезонье · NeoForge 1.21.1 · © 2026</div>
+            </div>
             <div class="footer__versions">
-                <a href="index.html" class="footer__version-link">← Fabric 1.19.2</a>
-                <span class="footer__version-active">NeoForge 1.21.1 ●</span>
+                <a href="index.html" class="footer__ver">Fabric 1.19.2</a>
+                <div class="footer__sep"></div>
+                <span class="footer__ver footer__ver--active nf-active">NeoForge 1.21.1</span>
             </div>
-            <div class="footer__divider"></div>
-            <p class="footer__copy">© 2026 HoIOnMine. Все права защищены.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
-
 </html>
