@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>HoIOnMine — Server Icon Generator</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #07080a;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    font-family: 'Arial', sans-serif;
+    color: #aca89f;
+  }
+
+  h1 {
+    font-size: 0.75rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #c47a3a;
+  }
+
+  .preview-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* 4× upscale for preview */
+  #preview {
+    width: 256px;
+    height: 256px;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    border: 1px solid rgba(196,122,58,0.3);
+    box-shadow: 0 0 40px rgba(196,122,58,0.1);
+  }
+
+  .label {
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    color: rgba(196,122,58,0.5);
+    text-transform: uppercase;
+  }
+
+  /* Hidden real canvas */
+  #icon { display: none; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #c47a3a;
+    color: #07080a;
+    border: none;
+    padding: 14px 36px;
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover {
+    background: #d9893e;
+    box-shadow: 0 4px 24px rgba(196,122,58,0.4);
+  }
+
+  .hint {
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    color: rgba(170,165,155,0.4);
+    text-align: center;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+
+<h1>HoIOnMine · Server Icon</h1>
+
+<div class="preview-wrap">
+  <canvas id="icon" width="64" height="64"></canvas>
+  <img id="preview" alt="64×64 preview">
+  <span class="label">Предпросмотр 256×256 (реальный размер 64×64)</span>
+</div>
+
+<button class="btn" onclick="download()">⬇ Скачать server-icon.png</button>
+
+<p class="hint">
+  Поместите server-icon.png в корневую папку сервера.<br>
+  Minecraft требует ровно 64×64 пикселя — файл готов к использованию.
+</p>
+
+<canvas id="icon" width="64" height="64"></canvas>
+
+<script>
+(function () {
+  const canvas = document.getElementById('icon');
+  const ctx    = canvas.getContext('2d');
+  const W = 64, H = 64, CX = 32, CY = 32;
+
+  /* ─── helpers ───────────────────────────── */
+  function line(x1, y1, x2, y2) {
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+  }
+
+  /* ─── background ────────────────────────── */
+  const bgGrad = ctx.createRadialGradient(CX, CY, 0, CX, CY, 46);
+  bgGrad.addColorStop(0, '#101218');
+  bgGrad.addColorStop(1, '#07080a');
+  ctx.fillStyle = bgGrad;
+  ctx.fillRect(0, 0, W, H);
+
+  /* ─── blueprint grid ────────────────────── */
+  ctx.strokeStyle = 'rgba(196,122,58,0.07)';
+  ctx.lineWidth   = 0.4;
+  [16, 32, 48].forEach(v => {
+    line(v, 0, v, H);
+    line(0, v, W, v);
+  });
+
+  /* ─── gear ──────────────────────────────── */
+  const TEETH  = 12;
+  const OUTER  = 26;   // tip of tooth
+  const BASE   = 21;   // root of tooth
+  const HUB    = 13;   // hub radius
+
+  ctx.beginPath();
+  for (let i = 0; i < TEETH * 2; i++) {
+    const angle = (i / (TEETH * 2)) * Math.PI * 2 - Math.PI / 2;
+    const r     = (i % 2 === 0) ? OUTER : BASE;
+    const x     = CX + r * Math.cos(angle);
+    const y     = CY + r * Math.sin(angle);
+    if (i === 0) ctx.moveTo(x, y);
+    else         ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+
+  // gear fill
+  const gGrad = ctx.createRadialGradient(CX - 6, CY - 6, 2, CX, CY, OUTER);
+  gGrad.addColorStop(0, 'rgba(196,122,58,0.28)');
+  gGrad.addColorStop(1, 'rgba(196,122,58,0.10)');
+  ctx.fillStyle   = gGrad;
+  ctx.fill();
+
+  ctx.strokeStyle = '#c47a3a';
+  ctx.lineWidth   = 1;
+  ctx.stroke();
+
+  /* ─── hub hole ──────────────────────────── */
+  ctx.beginPath();
+  ctx.arc(CX, CY, HUB, 0, Math.PI * 2);
+  ctx.fillStyle = '#08090b';
+  ctx.fill();
+
+  // hub outer ring
+  ctx.beginPath();
+  ctx.arc(CX, CY, HUB, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(196,122,58,0.65)';
+  ctx.lineWidth   = 1.2;
+  ctx.stroke();
+
+  // hub inner ring
+  ctx.beginPath();
+  ctx.arc(CX, CY, HUB - 4, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(196,122,58,0.2)';
+  ctx.lineWidth   = 0.5;
+  ctx.stroke();
+
+  // subtle spoke marks at 4 cardinal angles
+  for (let i = 0; i < 4; i++) {
+    const a  = (i / 4) * Math.PI * 2;
+    const x1 = CX + (HUB - 5) * Math.cos(a);
+    const y1 = CY + (HUB - 5) * Math.sin(a);
+    const x2 = CX + (BASE - 1) * Math.cos(a);
+    const y2 = CY + (BASE - 1) * Math.sin(a);
+    ctx.strokeStyle = 'rgba(196,122,58,0.18)';
+    ctx.lineWidth   = 0.5;
+    line(x1, y1, x2, y2);
+  }
+
+  /* ─── centre text ───────────────────────── */
+  ctx.shadowColor = 'rgba(196,122,58,0.9)';
+  ctx.shadowBlur  = 6;
+  ctx.fillStyle   = '#d9893e';
+  ctx.textAlign   = 'center';
+  ctx.textBaseline = 'middle';
+
+  // "HoI" – try to get a chunky font
+  ctx.font = '900 10px "Arial Black", Impact, Arial';
+  ctx.fillText('HoI', CX, CY);
+
+  ctx.shadowBlur  = 0;
+
+  /* ─── corner brackets ───────────────────── */
+  ctx.strokeStyle = 'rgba(196,122,58,0.45)';
+  ctx.lineWidth   = 1;
+  const M = 1.5, L = 6;   // margin, length
+  // top-left
+  line(M, M + L, M, M);  line(M, M, M + L, M);
+  // top-right
+  line(W - M, M + L, W - M, M);  line(W - M, M, W - M - L, M);
+  // bottom-left
+  line(M, H - M - L, M, H - M);  line(M, H - M, M + L, H - M);
+  // bottom-right
+  line(W - M, H - M - L, W - M, H - M);  line(W - M, H - M, W - M - L, H - M);
+
+  /* ─── outer border ──────────────────────── */
+  ctx.strokeStyle = 'rgba(196,122,58,0.14)';
+  ctx.lineWidth   = 0.5;
+  ctx.strokeRect(0.5, 0.5, W - 1, H - 1);
+
+  /* ─── push to preview img ───────────────── */
+  document.getElementById('preview').src = canvas.toDataURL('image/png');
+})();
+
+function download() {
+  const canvas = document.getElementById('icon');
+  const a      = document.createElement('a');
+  a.download   = 'server-icon.png';
+  a.href       = canvas.toDataURL('image/png');
+  a.click();
+}
+</script>
+
+</body>
+</html>
