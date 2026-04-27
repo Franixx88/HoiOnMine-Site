@@ -16,10 +16,32 @@
 </head>
 
 <body>
+    <!-- ====== NEW VERSION BANNER ====== -->
+    <div class="new-version-banner" id="new-version-banner">
+        <div class="new-version-banner__inner">
+            <span class="new-version-banner__tag">🔥 НОВАЯ ВЕРСИЯ</span>
+            <span class="new-version-banner__text">Steel & Sorcery 2.0 теперь на <strong>NeoForge 1.21.1</strong> — 180+ модов, Java 21, расширенная магия</span>
+            <a href="neoforge.html" class="new-version-banner__cta">Перейти →</a>
+            <button class="new-version-banner__close" id="banner-close" aria-label="Закрыть">✕</button>
+        </div>
+    </div>
+
     <!-- Sticky Navigation -->
     <nav id="sticky-nav" class="sticky-nav">
         <div class="sticky-nav__inner">
             <div class="sticky-nav__logo">⚔️ HoIOnMine</div>
+            <div class="sticky-nav__center">
+                <div class="version-switcher">
+                    <a href="index.html" class="version-switcher__btn version-switcher__btn--active">
+                        <span class="version-switcher__label">Fabric 1.19.2</span>
+                    </a>
+                    <span class="version-switcher__divider">|</span>
+                    <a href="neoforge.html" class="version-switcher__btn version-switcher__btn--new">
+                        <span class="version-switcher__badge">NEW</span>
+                        <span class="version-switcher__label">NeoForge 1.21.1</span>
+                    </a>
+                </div>
+            </div>
             <div class="sticky-nav__actions">
                 <button id="toggle-effects" class="sticky-nav__toggle" title="Вкл/Выкл эффекты">
                     <span class="sticky-nav__toggle-icon">✦</span>
@@ -54,6 +76,15 @@
         </div>
 
         <div class="hero__content">
+            <!-- Version Pill -->
+            <div class="hero__version-hint">
+                <a href="neoforge.html" class="hero__version-hint-link">
+                    <span class="hero__version-hint-dot"></span>
+                    Доступна версия 2.0 на NeoForge 1.21.1
+                    <span class="hero__version-hint-arrow">→</span>
+                </a>
+            </div>
+
             <div class="hero__logo">
                 <span class="hero__logo-icon">⚔️</span>
                 <h1 class="hero__title">
@@ -92,6 +123,29 @@
                     <span class="btn__text">УЗНАТЬ ПОДРОБНОСТИ</span>
                     <span class="btn__shine"></span>
                 </a>
+            </div>
+
+            <!-- Quick Stats Row -->
+            <div class="hero__quick-stats">
+                <div class="hero__quick-stat">
+                    <span class="hero__quick-stat-value">120+</span>
+                    <span class="hero__quick-stat-label">Модов</span>
+                </div>
+                <div class="hero__quick-stat-sep">·</div>
+                <div class="hero__quick-stat">
+                    <span class="hero__quick-stat-value">60</span>
+                    <span class="hero__quick-stat-label">FPS стабильно</span>
+                </div>
+                <div class="hero__quick-stat-sep">·</div>
+                <div class="hero__quick-stat">
+                    <span class="hero__quick-stat-value">Fabric</span>
+                    <span class="hero__quick-stat-label">1.19.2</span>
+                </div>
+                <div class="hero__quick-stat-sep">·</div>
+                <div class="hero__quick-stat">
+                    <span class="hero__quick-stat-value">Java</span>
+                    <span class="hero__quick-stat-label">17</span>
+                </div>
             </div>
 
             <div class="hero__scroll-indicator">
@@ -214,8 +268,8 @@
                     </svg>
                 </div>
                 <h3 class="tech-card__title">Fabric 1.19.2</h3>
-                <p class="tech-card__text">Самая проверенная версия для крупных проектов. Стабильная база для масштабных
-                    модификаций.</p>
+                <p class="tech-card__text">Проверенная версия для крупных проектов. Стабильная база для масштабных
+                    модификаций с отточенной совместимостью.</p>
             </div>
 
             <div class="tech-card" data-tech="performance">
@@ -226,8 +280,8 @@
                     </svg>
                 </div>
                 <h3 class="tech-card__title">Максимальная Производительность</h3>
-                <p class="tech-card__text">Интегрированы моды оптимизации — Lithium, Sodium — для стабильного FPS даже
-                    на масштабных серверах.</p>
+                <p class="tech-card__text">Lithium, Sodium, FerriteCore, Krypton — комплексная оптимизация для
+                    стабильного FPS даже на масштабных серверах.</p>
             </div>
 
             <div class="tech-card" data-tech="stability">
@@ -239,7 +293,7 @@
                 </div>
                 <h3 class="tech-card__title">Стабильность</h3>
                 <p class="tech-card__text">Сборка протестирована на конфликты модов. Каждое обновление проходит полный
-                    цикл тестирования.</p>
+                    цикл тестирования перед релизом.</p>
             </div>
         </div>
 
@@ -257,6 +311,53 @@
                 <span class="stat-item__number" data-target="500">0</span>
                 <span class="stat-item__label">Часов тестирования</span>
             </div>
+        </div>
+    </section>
+
+    <!-- ====== NEW VERSION PROMO SECTION ====== -->
+    <section class="version-promo">
+        <div class="version-promo__bg-grid"></div>
+        <div class="version-promo__inner">
+            <div class="version-promo__label">
+                <span class="version-promo__label-tag">🆕 ДОСТУПНО СЕЙЧАС</span>
+            </div>
+            <h2 class="version-promo__title">Steel & Sorcery 2.0</h2>
+            <p class="version-promo__subtitle">Полный ребилд на NeoForge 1.21.1</p>
+            <div class="version-promo__features">
+                <div class="version-promo__feature">
+                    <span class="version-promo__feature-icon">🔥</span>
+                    <div>
+                        <strong>NeoForge</strong>
+                        <span>вместо Fabric</span>
+                    </div>
+                </div>
+                <div class="version-promo__feature">
+                    <span class="version-promo__feature-icon">📦</span>
+                    <div>
+                        <strong>180+</strong>
+                        <span>модов</span>
+                    </div>
+                </div>
+                <div class="version-promo__feature">
+                    <span class="version-promo__feature-icon">✨</span>
+                    <div>
+                        <strong>3 школы</strong>
+                        <span>магии</span>
+                    </div>
+                </div>
+                <div class="version-promo__feature">
+                    <span class="version-promo__feature-icon">⚡</span>
+                    <div>
+                        <strong>Java 21</strong>
+                        <span>LTS</span>
+                    </div>
+                </div>
+            </div>
+            <a href="neoforge.html" class="btn btn--forge-promo">
+                <span class="btn__icon">⚙️</span>
+                <span class="btn__text">ПЕРЕЙТИ К NEOFORGE 1.21.1</span>
+                <span class="btn__shine"></span>
+            </a>
         </div>
     </section>
 
@@ -352,13 +453,31 @@
     <footer class="footer">
         <div class="footer__content">
             <div class="footer__logo">⚔️ HoIOnMine: Steel & Sorcery</div>
-            <p class="footer__text">Fabric 1.19.2 • Глобальная стратегия • Minecraft Modpack</p>
+            <p class="footer__text">Fabric 1.19.2 · Глобальная стратегия · Minecraft Modpack</p>
+            <div class="footer__nav">
+                <span class="footer__nav-active">Fabric 1.19.2 ●</span>
+                <a href="neoforge.html" class="footer__nav-link">NeoForge 1.21.1 →</a>
+            </div>
             <div class="footer__divider"></div>
             <p class="footer__copy">© 2026 HoIOnMine. Все права защищены.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Banner close
+        const bannerClose = document.getElementById('banner-close');
+        const banner = document.getElementById('new-version-banner');
+        if (bannerClose && banner) {
+            if (sessionStorage.getItem('banner-closed')) {
+                banner.style.display = 'none';
+            }
+            bannerClose.addEventListener('click', () => {
+                banner.style.display = 'none';
+                sessionStorage.setItem('banner-closed', '1');
+            });
+        }
+    </script>
 </body>
 
 </html>

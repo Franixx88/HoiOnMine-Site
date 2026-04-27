@@ -1,0 +1,463 @@
+/* ============================================
+   HoIOnMine: NeoForge 1.21.1
+   Forge-specific overrides & new components
+   ============================================ */
+
+/* ---------- NeoForge Color Variables ---------- */
+:root {
+    --forge-orange: #ea6c1a;
+    --forge-amber: #f59e0b;
+    --forge-dark: #7c2d12;
+    --forge-glow: #fb923c;
+    --forge-deep: #431407;
+    --forge-border: rgba(234, 108, 26, 0.25);
+    --forge-border-glow: rgba(251, 146, 60, 0.4);
+}
+
+/* ---------- Version Strip ---------- */
+.version-strip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 101;
+    background: linear-gradient(90deg, var(--forge-dark), #7c2d12, var(--forge-dark));
+    border-bottom: 1px solid rgba(234, 108, 26, 0.4);
+    padding: 8px 0;
+}
+
+.version-strip__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
+
+.version-strip__tag {
+    font-family: var(--font-industrial);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--forge-amber);
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+.version-strip__text {
+    font-family: var(--font-industrial);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: rgba(255, 220, 180, 0.85);
+}
+
+.version-strip__link {
+    font-family: var(--font-industrial);
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: var(--forge-glow);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(251, 146, 60, 0.4);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.version-strip__link:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+/* Offset content for the strip */
+body.theme-neoforge .sticky-nav {
+    top: 33px;
+}
+
+body.theme-neoforge #hero {
+    padding-top: 33px;
+}
+
+/* ---------- Nav Badge ---------- */
+.nf-badge {
+    display: inline-block;
+    font-family: var(--font-industrial);
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+    color: var(--forge-orange);
+    border: 1px solid rgba(234, 108, 26, 0.5);
+    padding: 2px 6px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-left: 6px;
+    position: relative;
+    top: -1px;
+}
+
+/* ---------- Forge Button Variants ---------- */
+.btn--forge {
+    color: #fff;
+    background: linear-gradient(135deg, var(--forge-dark), var(--forge-orange));
+    border-color: var(--forge-orange);
+    box-shadow:
+        0 0 20px rgba(234, 108, 26, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn--forge:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 8px 30px rgba(234, 108, 26, 0.5),
+        0 0 60px rgba(234, 108, 26, 0.25),
+        0 0 100px rgba(234, 108, 26, 0.1);
+}
+
+.btn--ghost {
+    color: var(--muted-text);
+    background: transparent;
+    border-color: rgba(160, 160, 160, 0.2);
+}
+
+.btn--ghost:hover {
+    color: var(--pale-text);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(160, 160, 160, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ---------- Hero NeoForge Overrides ---------- */
+.hero--neoforge .hero__overlay--forge {
+    background:
+        radial-gradient(ellipse at 20% 50%, rgba(124, 45, 18, 0.2) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(107, 63, 160, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(10, 10, 15, 0.95) 90%);
+}
+
+.hero__bg-image--forge {
+    background: url('hero_bg.png') center/cover no-repeat;
+    opacity: 0.25;
+    filter: saturate(0.5) brightness(0.5) hue-rotate(20deg);
+}
+
+.hero__forge-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(234, 108, 26, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 108, 26, 0.025) 1px, transparent 1px);
+    background-size: 80px 80px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero__rift-glow--forge {
+    background: linear-gradient(180deg,
+            transparent 0%,
+            rgba(234, 108, 26, 0.4) 20%,
+            rgba(251, 146, 60, 0.5) 50%,
+            rgba(234, 108, 26, 0.4) 80%,
+            transparent 100%);
+}
+
+.hero__version-tag {
+    margin-bottom: 20px;
+}
+
+.hero__version-pill {
+    display: inline-block;
+    font-family: var(--font-industrial);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--forge-amber);
+    background: rgba(234, 108, 26, 0.1);
+    border: 1px solid rgba(234, 108, 26, 0.4);
+    padding: 8px 20px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(234, 108, 26, 0.1);
+}
+
+.hero__title-forge {
+    display: block;
+    background: linear-gradient(135deg, var(--forge-orange), var(--forge-amber), #fde68a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(234, 108, 26, 0.4));
+    font-size: 0.85em;
+}
+
+/* Hero Badges */
+.hero__badges {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.hero__badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(234, 108, 26, 0.07);
+    border: 1px solid rgba(234, 108, 26, 0.2);
+    border-radius: 3px;
+    padding: 8px 14px;
+    transition: all 0.3s;
+}
+
+.hero__badge:hover {
+    background: rgba(234, 108, 26, 0.12);
+    border-color: rgba(234, 108, 26, 0.4);
+}
+
+.hero__badge-icon {
+    font-size: 1rem;
+}
+
+.hero__badge-text {
+    font-family: var(--font-industrial);
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    color: var(--pale-text);
+    white-space: nowrap;
+}
+
+/* ---------- Section Header Forge Variants ---------- */
+.forge-tag {
+    color: var(--forge-amber) !important;
+    background: rgba(234, 108, 26, 0.08) !important;
+    border-color: rgba(234, 108, 26, 0.25) !important;
+}
+
+.forge-line {
+    background: linear-gradient(90deg, transparent, var(--forge-orange), transparent) !important;
+}
+
+/* ---------- What's New Section ---------- */
+.whats-new-section {
+    position: relative;
+    padding: var(--section-padding) 30px;
+    background:
+        radial-gradient(ellipse at 30% 0%, rgba(124, 45, 18, 0.12) 0%, transparent 50%),
+        var(--bg-secondary);
+    overflow: hidden;
+    z-index: 2;
+}
+
+.whats-new-section__bg {
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ea6c1a' fill-opacity='0.015'%3E%3Cpath d='M40 40v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM40 0v-4h-2v4h-4v2h4v4h2V6h4V4h-4z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.changelog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.changelog-card {
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid rgba(234, 108, 26, 0.12);
+    border-radius: 6px;
+    padding: 30px 28px;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.changelog-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.changelog-card:hover {
+    border-color: rgba(234, 108, 26, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(234, 108, 26, 0.05);
+}
+
+.changelog-card--major { border-left: 3px solid var(--forge-orange); }
+.changelog-card--perf { border-left: 3px solid #22d3ee; }
+.changelog-card--content { border-left: 3px solid var(--tarnished-gold); }
+.changelog-card--magic { border-left: 3px solid var(--magic-glow); }
+.changelog-card--world { border-left: 3px solid #4ade80; }
+.changelog-card--java { border-left: 3px solid var(--forge-amber); }
+
+.changelog-card__icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.changelog-card__title {
+    font-family: var(--font-industrial);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--pale-text);
+    margin-bottom: 12px;
+}
+
+.changelog-card__text {
+    font-size: 0.88rem;
+    color: var(--muted-text);
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.changelog-card__tag {
+    display: inline-block;
+    font-family: var(--font-industrial);
+    font-size: 0.55rem;
+    letter-spacing: 2px;
+    color: var(--forge-amber);
+    background: rgba(234, 108, 26, 0.08);
+    border: 1px solid rgba(234, 108, 26, 0.2);
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+
+/* ---------- Pillars Forge Override ---------- */
+.pillars--forge {
+    background:
+        radial-gradient(ellipse at 30% 80%, rgba(124, 45, 18, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 20%, rgba(124, 45, 18, 0.05) 0%, transparent 50%),
+        var(--bg-secondary);
+}
+
+/* ---------- Tech Section Forge Override ---------- */
+.tech-section--forge .tech-card__ring--forge circle {
+    stroke: rgba(234, 108, 26, 0.2);
+}
+
+.tech-section--forge .tech-card:hover .tech-card__ring--forge circle {
+    stroke: rgba(234, 108, 26, 0.5);
+}
+
+.tech-section--forge .tech-card:hover {
+    border-color: rgba(234, 108, 26, 0.25);
+}
+
+.stat-item__number--forge {
+    background: linear-gradient(135deg, var(--forge-orange), var(--forge-amber)) !important;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ---------- Install Section Forge Override ---------- */
+.install-section--forge {
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(124, 45, 18, 0.1) 0%, transparent 60%),
+        var(--bg-secondary);
+}
+
+.install-step__number--forge {
+    border-color: rgba(234, 108, 26, 0.35) !important;
+    color: var(--forge-orange) !important;
+}
+
+.install-step__warning--forge {
+    background: rgba(234, 108, 26, 0.06) !important;
+    border-color: rgba(234, 108, 26, 0.25) !important;
+    border-left-color: var(--forge-orange) !important;
+}
+
+/* Install Back Link */
+.install-section__back {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.install-section__back-text {
+    font-family: var(--font-industrial);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--muted-text);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+/* ---------- Footer Forge Override ---------- */
+.footer--forge {
+    border-top-color: rgba(234, 108, 26, 0.12);
+}
+
+.footer--forge .footer__logo {
+    background: linear-gradient(135deg, var(--forge-orange), var(--forge-amber));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer__versions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 14px 0;
+}
+
+.footer__version-link {
+    font-family: var(--font-industrial);
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    color: var(--muted-text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer__version-link:hover {
+    color: var(--pale-text);
+}
+
+.footer__version-active {
+    font-family: var(--font-industrial);
+    font-size: 0.62rem;
+    letter-spacing: 1px;
+    color: var(--forge-orange);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .changelog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__badges {
+        gap: 8px;
+    }
+
+    .hero__badge-text {
+        font-size: 0.55rem;
+    }
+
+    .version-strip__text {
+        display: none;
+    }
+
+    .footer__versions {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__badges {
+        flex-direction: column;
+        align-items: center;
+    }
+}

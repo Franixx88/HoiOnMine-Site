@@ -158,6 +158,12 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(step);
     });
 
+    // Observe changelog cards (NeoForge page)
+    document.querySelectorAll('.changelog-card').forEach((card, i) => {
+        card.dataset.delay = i * 100;
+        revealObserver.observe(card);
+    });
+
     // ============ STATS COUNTER ============
     const statNumbers = document.querySelectorAll('.stat-item__number');
     let statsAnimated = false;
